@@ -6,7 +6,7 @@
 /*   By: cnamoune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:06:31 by cnamoune          #+#    #+#             */
-/*   Updated: 2024/10/18 18:26:51 by cnamoune         ###   ########.fr       */
+/*   Updated: 2024/10/31 02:04:52 by cnamoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t i;
-	size_t y;
+	size_t	i;
+	size_t	y;
 
 	y = 0;
 	i = ft_strlen(src);

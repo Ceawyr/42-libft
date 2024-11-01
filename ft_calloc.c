@@ -6,30 +6,21 @@
 /*   By: cnamoune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 18:49:26 by cnamoune          #+#    #+#             */
-/*   Updated: 2024/10/21 21:14:23 by cnamoune         ###   ########.fr       */
+/*   Updated: 2024/10/31 01:55:39 by cnamoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char *ptr;
+	void	*ptr;
 
-	if (nmemb != 0 && (nmemb * size) / size != nmemb)
+	if (size != 0 && (nmemb * size) / size != nmemb)
 		return (NULL);
-	ptr = malloc(nmemb * size);
+	ptr = (void *)malloc(nmemb * size);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return ((void *)ptr);
+	ft_bzero(ptr, (nmemb * size));
+	return (ptr);
 }
-/*
-int	main()
-{
-	int *tab;
-	tab = ft_calloc(0, 0);
-	for (int i = 0; i < 1000; i++)
-		printf("%d", tab[i]);
-	free(tab);
-}*/

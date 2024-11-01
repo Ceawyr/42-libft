@@ -6,7 +6,7 @@
 /*   By: cnamoune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:30:08 by cnamoune          #+#    #+#             */
-/*   Updated: 2024/10/19 22:38:50 by cnamoune         ###   ########.fr       */
+/*   Updated: 2024/10/31 22:45:07 by cnamoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,22 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t i;
-	size_t y;
-	int c;
+	size_t	src_len;
+	size_t	dst_len;
+	size_t	i;
 
-	c = 0;
-//	i = ft_strlen(src);
-//	y = ft_strlen(dst);
-	if (y == size)
-		return(i + y);
-	while (size < i)
+	if (size == 0)
+		return (ft_strlen(src));
+	src_len = ft_strlen(src);
+	dst_len = ft_strlen(dst);
+	if (size <= dst_len)
+		return (size + src_len);
+	i = 0;
+	while (src[i] != '\0' && dst_len + i < size - 1)
 	{
-		dst[y] = src[c];
-		size--;
-		c++;
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	return (i + y);
-}
-
-int	main()
-{
-	char tab[] = "ca va bien ?";
-	char dtab[50] = "Bonjour, ";
-	ft_strlcat(dtab, tab, sizeof(tab));
-	printf("%s", dtab);
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }

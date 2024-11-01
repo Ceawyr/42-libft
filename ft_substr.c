@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cnamoune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 19:32:48 by cnamoune          #+#    #+#             */
-/*   Updated: 2024/10/23 16:42:06 by cnamoune         ###   ########.fr       */
+/*   Created: 2024/10/23 11:19:55 by cnamoune          #+#    #+#             */
+/*   Updated: 2024/10/24 20:33:13 by cnamoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char		*destination;
-	const unsigned char	*source;
-	size_t				i;
+	size_t	i;
+	size_t	y;
+	char	*sub;
 
-	if (!dest && !src)
+	if (!s)
 		return (NULL);
-	destination = (unsigned char *)dest;
-	source = (const unsigned char *)src;
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	y = ft_strlen(s + start);
+	if (y < len)
+		len = y;
+	sub = malloc(len + 1);
+	if (!sub)
+		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < len && s[start])
 	{
-		destination[i] = source[i];
+		sub[i] = s[start];
 		i++;
+		start++;
 	}
-	return (dest);
+	sub[i] = '\0';
+	return (sub);
 }
+/*
+int	main()
+{
+	char tab[] = "";
+	char *dest = ft_substr(tab, 11, 6);
+	printf("%s", dest);
+	free(dest);
+}*/
